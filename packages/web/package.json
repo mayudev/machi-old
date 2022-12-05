@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "@fontsource/quicksand": "^4.5.11",
+    "leaflet": "^1.9.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
+    "react-leaflet": "^4.2.0",
     "react-router-dom": "^6.4.4",
     "styled-components": "^5.3.6"
   },
@@ -20,6 +23,8 @@
     "@testing-library/react": "^13.4.0",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
+    "@types/react-icons": "^3.0.0",
+    "@types/react-leaflet": "^2.8.2",
     "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "^2.2.0",
     "typescript": "^4.6.4",
