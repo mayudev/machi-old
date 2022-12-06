@@ -7,6 +7,7 @@ import Map from '../components/map/Map';
 import { PopupMode } from '../lib/popup';
 import Popup from './Popup';
 import '../style/transition.css';
+import LoginPopup from './popups/LoginPopup';
 
 const Overlay = styled.div`
   position: fixed;
@@ -37,7 +38,7 @@ export default function Layout() {
         classNames="popup"
       >
         <Popup onHide={hidePopup}>
-          <div>login popup</div>
+          <LoginPopup onClose={hidePopup} />
         </Popup>
       </CSSTransition>
 

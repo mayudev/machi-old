@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import ThemeSwitcher from './components/buttons/ThemeSwitcher';
+import ThemeSwitcher from './components/inputs/ThemeSwitcher';
 import { ThemeContext, themeMappings, ThemeMode } from './context/ThemeContext';
 import Layout from './pages/Layout';
 
@@ -14,8 +14,8 @@ const router = createBrowserRouter([
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: ${(props) => props.theme.background};
-    color: ${(props) => props.theme.foreground};
+    background: ${props => props.theme.background};
+    color: ${props => props.theme.foreground};
   }
 `;
 

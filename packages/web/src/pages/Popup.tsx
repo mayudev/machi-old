@@ -23,6 +23,11 @@ const Container = styled.div`
 const Window = styled.div`
   background: ${props => props.theme.background};
   z-index: 1002;
+
+  overflow: hidden;
+  border-radius: 8px;
+
+  width: min(560px, 100%);
 `;
 
 export default function Popup({ children, onHide }: PropsWithChildren<Props>) {

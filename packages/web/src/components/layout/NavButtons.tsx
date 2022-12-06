@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import MapButton from '../buttons/generic/MapButton';
+import MapButton from '../inputs/generic/MapButton';
 
 import { FiUser } from 'react-icons/fi';
 
