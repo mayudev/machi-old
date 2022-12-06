@@ -16,7 +16,7 @@ const Container = styled.div`
 export default function Map() {
   return (
     <Container>
-      <MapContainer center={[51.505, -0.09]} zoom={11} zoomControl={false}>
+      <MapContainer center={[41.37, 2.2]} zoom={10} zoomControl={false}>
         <TileLayer attribution={ATTRIB} url={OSM_URL}></TileLayer>
       </MapContainer>
     </Container>
