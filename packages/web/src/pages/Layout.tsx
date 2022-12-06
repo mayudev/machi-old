@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import Navbar from '../components/layout/Navbar';
 import Map from '../components/map/Map';
 import { PopupMode } from '../lib/popup';
 import Popup from './Popup';
+import '../style/transition.css';
 
 const Overlay = styled.div`
   position: fixed;
@@ -28,11 +30,17 @@ export default function Layout() {
   return (
     <>
       <Map />
-      {popupMode !== PopupMode.Hidden && (
+      <CSSTransition
+        in={popupMode !== PopupMode.Hidden}
+        timeout={200}
+        unmountOnExit={true}
+        classNames="popup"
+      >
         <Popup onHide={hidePopup}>
-          {popupMode === PopupMode.Login && <div>login popup</div>}
+          <div>login popup</div>
         </Popup>
-      )}
+      </CSSTransition>
+
       <Overlay>
         <Navbar onLoginPopup={showLoginPopup} />
         <Outlet />

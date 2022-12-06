@@ -46,7 +46,9 @@ export default function Popup({ children, onHide }: PropsWithChildren<Props>) {
   }, []);
   return (
     <Container onClick={backdropClick}>
-      <Window onClick={e => e.stopPropagation()}>{children}</Window>
+      <Window className="contents" onClick={e => e.stopPropagation()}>
+        {children}
+      </Window>
     </Container>
   );
 }
