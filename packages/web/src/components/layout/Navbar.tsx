@@ -12,8 +12,8 @@ const Navigation = styled.nav`
 export default function Navbar() {
   return (
     <Navigation>
-      <SearchBar />
       <AppLogo />
+      <SearchBar />
       <NavButtons />
     </Navigation>
   );

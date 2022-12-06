@@ -12,8 +12,16 @@ const Search = styled.input`
   padding: 16px 18px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 -1px 0px rgba(0, 0, 0, 0.02);
   border-radius: 8px;
+
+  opacity: 0.8;
+  transition: opacity 200ms;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 `;
 
 export default function SearchBar() {
-  return <Search type="search" />;
+  return <Search type="search" placeholder="Search for places..." />;
 }
