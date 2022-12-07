@@ -8,13 +8,27 @@ import { PopupMode } from '../lib/popup';
 import Popup from './Popup';
 import '../style/transition.css';
 import LoginPopup from './popups/LoginPopup';
+import Place from './Place';
 
 const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
+
+  pointer-events: none;
+
   z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+const OverlayLayout = styled.div`
+  display: grid;
+  grid-template-columns: 408px 1fr 1fr;
+  flex-grow: 1;
 `;
 
 export default function Layout() {
@@ -44,7 +58,10 @@ export default function Layout() {
 
       <Overlay>
         <Navbar onLoginPopup={showLoginPopup} />
-        <Outlet />
+        <OverlayLayout>
+          <Place />
+          <Outlet />
+        </OverlayLayout>
       </Overlay>
     </>
   );

@@ -10,7 +10,7 @@ const Search = styled.input`
   font-weight: 500;
   font-size: 15px;
   padding: 16px 18px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 -1px 0px rgba(0, 0, 0, 0.02);
+  box-shadow: var(--shadow-primary);
   border-radius: 8px;
 
   opacity: 0.8;

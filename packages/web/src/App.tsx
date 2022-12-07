@@ -32,7 +32,6 @@ export default function App() {
       <ThemeProvider theme={themeMappings[theme]}>
         <GlobalStyle />
         <RouterProvider router={router}></RouterProvider>
-        <ThemeSwitcher />
       </ThemeProvider>
     </ThemeContext.Provider>
   );

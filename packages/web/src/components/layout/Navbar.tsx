@@ -10,6 +10,7 @@ type Props = {
 const Navigation = styled.nav`
   display: grid;
   margin: 1rem 1.5rem;
+  pointer-events: all;
   grid-template-columns: 1fr 1fr 1fr;
 `;
 
