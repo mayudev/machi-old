@@ -1,4 +1,5 @@
 import { FiX } from 'react-icons/fi';
+import { IoLogoGoogle } from 'react-icons/io5';
 import styled from 'styled-components';
 import FormButton from '../../components/inputs/generic/FormButton';
 import Input from '../../components/inputs/Input';
@@ -72,7 +73,7 @@ export default function LoginPopup({ onClose }: Props) {
           <FormButton primary>Continue</FormButton>
         </ButtonContainer>
         <Center>or</Center>
-        <FormButton>Continue with Google</FormButton>
+        <FormButton icon={<IoLogoGoogle />}>Continue with Google</FormButton>
       </Body>
     </div>
   );

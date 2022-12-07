@@ -4,6 +4,7 @@ import styled from 'styled-components';
 type Props = {
   onClick?(): void;
   primary?: boolean;
+  icon?: JSX.Element;
 };
 
 const Button = styled.button<{
@@ -20,21 +21,34 @@ const Button = styled.button<{
   display: block;
   width: 100%;
   font-weight: 600;
+  background: ${props =>
+    props.primary ? props.theme.primary : props.theme.background};
+  border: ${props => (props.primary ? '' : `1px solid ${props.theme.border}`)};
+  color: ${props => (props.primary ? '' : props.theme.foreground)};
+
+  transition: background 200ms ease;
 
   &:hover {
     opacity: 1;
+    background: ${props =>
+      props.primary ? props.theme.primary2 : props.theme.background2};
   }
+`;
 
-  background: ${props => (props.primary ? props.theme.primary : '')};
+const IconElement = styled.span`
+  vertical-align: middle;
+  margin-right: 8px;
 `;
 
 export default function FormButton({
   children,
+  icon,
   primary,
   onClick,
 }: PropsWithChildren<Props>) {
   return (
     <Button primary={primary} onClick={onClick}>
+      {icon && <IconElement>{icon}</IconElement>}
       {children}
     </Button>
   );
