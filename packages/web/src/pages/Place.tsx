@@ -1,5 +1,7 @@
-import { useEffect } from 'react';
+import { cloneElement, useEffect } from 'react';
+import { FiX } from 'react-icons/fi';
 import { useSearchParams } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -9,11 +11,17 @@ const Container = styled.div`
   background: white;
   margin: 12px;
   box-shadow: var(--shadow);
-  opacity: 0.8;
   border-radius: 8px;
 
   pointer-events: all;
 `;
+
+const HeaderButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  vertical-align: middle;
+`;
+
 export default function Place() {
   const [search, setSearch] = useSearchParams();
 
@@ -24,11 +32,20 @@ export default function Place() {
   };
 
   return (
-    <Container>
-      <button onClick={close}>close</button>
-      <h3>Benidorm</h3>
-      lat: {search.get('lat')}
-      lng: {search.get('lng')}
-    </Container>
+    <CSSTransition
+      in={search.has('lat')}
+      timeout={200}
+      unmountOnExit={true}
+      classNames="place"
+    >
+      <Container>
+        <HeaderButton onClick={close}>
+          <FiX />
+        </HeaderButton>
+        <h3>Benidorm</h3>
+        lat: {search.get('lat')}
+        lng: {search.get('lng')}
+      </Container>
+    </CSSTransition>
   );
 }

@@ -24,3 +24,22 @@
   opacity: 0;
   transition: opacity 200ms;
 }
+
+.place-enter {
+  opacity: 0;
+}
+
+.place-enter-active,
+.place-enter-done {
+  opacity: 0.8;
+  transition: opacity 200ms;
+}
+
+.place-exit {
+  opacity: 0.8;
+}
+
+.place-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
