@@ -2,7 +2,7 @@ import { MapContainer, Marker, TileLayer, useMapEvent } from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LatLng } from 'leaflet';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -20,6 +20,12 @@ const Container = styled.div`
 function ClickHandler() {
   const [current, setCurrent] = useState<LatLng | null>(null);
   const [search, setSearch] = useSearchParams();
+
+  useEffect(() => {
+    if (!search.has('lat')) {
+      setCurrent(null);
+    }
+  }, [search]);
 
   useMapEvent('click', e => {
     setCurrent(e.latlng);

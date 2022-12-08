@@ -27,7 +27,8 @@ const Overlay = styled.div`
 
 const OverlayLayout = styled.div`
   display: grid;
-  grid-template-columns: 408px 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 20vh;
   flex-grow: 1;
 `;
 
