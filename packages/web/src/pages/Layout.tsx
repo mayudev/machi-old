@@ -33,7 +33,7 @@ const OverlayLayout = styled.div`
 `;
 
 export default function Layout() {
-  const [popupMode, setPopupMode] = useState<PopupMode>(PopupMode.Login);
+  const [popupMode, setPopupMode] = useState<PopupMode>(PopupMode.Hidden);
 
   const hidePopup = () => {
     setPopupMode(PopupMode.Hidden);
@@ -48,7 +48,7 @@ export default function Layout() {
       <Map />
       <CSSTransition
         in={popupMode !== PopupMode.Hidden}
-        timeout={200}
+        timeout={500}
         unmountOnExit={true}
         classNames="popup"
       >
