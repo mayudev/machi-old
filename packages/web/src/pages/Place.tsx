@@ -3,6 +3,7 @@ import { FiX } from 'react-icons/fi';
 import { useSearchParams } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
+import { serviceNominatim } from '../store/modules/nominatim';
 
 const Container = styled.div`
   grid-row: 2;
@@ -25,7 +26,14 @@ const HeaderButton = styled.button`
 export default function Place() {
   const [search, setSearch] = useSearchParams();
 
-  useEffect(() => {}, [search]);
+  const [trigger, result] = serviceNominatim.endpoints.reverse.useLazyQuery();
+  useEffect(() => {
+    const lat = search.get('lat');
+    const lng = search.get('lng');
+    if (lat && lng) {
+      trigger([lat, lng]);
+    }
+  }, [search]);
 
   const close = () => {
     setSearch({});
@@ -42,9 +50,8 @@ export default function Place() {
         <HeaderButton onClick={close}>
           <FiX />
         </HeaderButton>
-        <h3>Benidorm</h3>
-        lat: {search.get('lat')}
-        lng: {search.get('lng')}
+        <h3>{result.data?.address.city || 'unknown'}</h3>
+        lat: {result.isLoading}
       </Container>
     </CSSTransition>
   );
