@@ -36,19 +36,23 @@
 
 .place-enter {
   opacity: 0;
+  transform: translateY(20px);
 }
 
 .place-enter-active,
 .place-enter-done {
   opacity: 0.8;
-  transition: opacity 200ms;
+  transform: translateY(0);
+  transition: opacity 200ms, transform 200ms;
 }
 
 .place-exit {
   opacity: 0.8;
+  transform: translateY(0);
 }
 
 .place-exit-active {
   opacity: 0;
-  transition: opacity 200ms;
+  transition: opacity 200ms, transform 200ms;
+  transform: translateY(20px);
 }
