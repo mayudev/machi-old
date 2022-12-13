@@ -1,1 +1,2 @@
-export type { Reverse, ReverseAddress } from './nominatim/reverse';
+export type { IReverse, ReverseAddress } from './nominatim/reverse';
+export { Reverse } from './nominatim/reverse';

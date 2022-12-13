@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Reverse } from 'types';
+import { Reverse, IReverse } from 'types';
 
 export const serviceNominatim = createApi({
   reducerPath: 'serviceNominatim',
@@ -11,6 +11,9 @@ export const serviceNominatim = createApi({
     reverse: build.query<Reverse, [string, string, string?]>({
       query: ([lat, lng, zoom = 10]) =>
         `reverse?lat=${lat}&lon=${lng}&zoom=${zoom}&format=json`,
+      transformResponse(data: IReverse, meta, arg) {
+        return new Reverse(data);
+      },
     }),
   }),
 });

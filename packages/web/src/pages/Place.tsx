@@ -1,8 +1,9 @@
-import { cloneElement, useEffect } from 'react';
-import { FiX } from 'react-icons/fi';
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
+import Spinner from '../components/common/Spinner';
+import PlaceContents from '../components/popups/place/PlaceContents';
 import { serviceNominatim } from '../store/modules/nominatim';
 
 const Container = styled.div`
@@ -15,12 +16,21 @@ const Container = styled.div`
   border-radius: 8px;
 
   pointer-events: all;
+
+  display: flex;
+  flex-direction: column;
+
+  &:not(.place-exit):hover {
+    opacity: 1;
+  }
 `;
 
-const HeaderButton = styled.button`
-  all: unset;
-  cursor: pointer;
-  vertical-align: middle;
+const Center = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-grow: 1;
 `;
 
 export default function Place() {
@@ -47,11 +57,15 @@ export default function Place() {
       classNames="place"
     >
       <Container>
-        <HeaderButton onClick={close}>
-          <FiX />
-        </HeaderButton>
-        <h3>{result.data?.address.city || 'unknown'}</h3>
-        lat: {result.isLoading}
+        {result.isFetching ? (
+          <Center>
+            <Spinner />
+          </Center>
+        ) : result.isSuccess ? (
+          <PlaceContents onClose={close} data={result.data} />
+        ) : (
+          'error'
+        )}
       </Container>
     </CSSTransition>
   );
