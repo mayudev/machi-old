@@ -40,8 +40,9 @@ export default function Place() {
   useEffect(() => {
     const lat = search.get('lat');
     const lng = search.get('lng');
-    if (lat && lng) {
-      trigger([lat, lng]);
+    const zoom = search.get('zoom');
+    if (lat && lng && zoom) {
+      trigger([lat, lng, zoom]);
     }
   }, [search]);
 

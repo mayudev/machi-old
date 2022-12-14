@@ -1,4 +1,10 @@
-import { MapContainer, Marker, TileLayer, useMapEvent } from 'react-leaflet';
+import {
+  MapContainer,
+  Marker,
+  TileLayer,
+  useMap,
+  useMapEvent,
+} from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
@@ -20,6 +26,7 @@ const Container = styled.div`
 function ClickHandler() {
   const [current, setCurrent] = useState<LatLng | null>(null);
   const [search, setSearch] = useSearchParams();
+  const map = useMap();
 
   useEffect(() => {
     if (!search.has('lat')) {
@@ -30,8 +37,9 @@ function ClickHandler() {
   useMapEvent('click', e => {
     setCurrent(e.latlng);
     setSearch({
-      lat: e.latlng.lat.toFixed(4).toString(),
-      lng: e.latlng.lng.toFixed(4).toString(),
+      lat: e.latlng.lat.toFixed(7).toString(),
+      lng: e.latlng.lng.toFixed(7).toString(),
+      zoom: map.getZoom().toString(),
     });
   });
 

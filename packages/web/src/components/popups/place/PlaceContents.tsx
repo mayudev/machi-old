@@ -28,16 +28,21 @@ const Title = styled.div`
   font-weight: 600;
 `;
 
+const Subtitle = styled.div`
+  opacity: 0.8;
+`;
+
 export default function PlaceContents({ data, onClose }: Props) {
   return (
     <Container>
       <CloseButton onClose={onClose} />
       <Contents>
-        <Title>{data.municipality}</Title>
-        <div>
+        <Title>{data.mostSpecificName || data.municipality}</Title>
+        <div>{data.mostSpecificName && data.municipality}</div>
+        <Subtitle>
           {data.place.address?.state && data.place.address?.state + ', '}{' '}
           {data.place.address?.country}
-        </div>
+        </Subtitle>
       </Contents>
     </Container>
   );
