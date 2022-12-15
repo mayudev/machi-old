@@ -1,14 +1,20 @@
 import { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import ThemeSwitcher from './components/inputs/ThemeSwitcher';
 import { ThemeContext, themeMappings, ThemeMode } from './context/ThemeContext';
 import Layout from './pages/Layout';
+import Search from './pages/Search';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    children: [
+      {
+        path: '/search',
+        element: <Search />,
+      },
+    ],
   },
 ]);
 

@@ -1,3 +1,5 @@
+import { KeyboardEventHandler, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Search = styled.input`
@@ -23,5 +25,26 @@ const Search = styled.input`
 `;
 
 export default function SearchBar() {
-  return <Search type="search" placeholder="Search for places..." />;
+  const [value, setValue] = useState('');
+  const navigate = useNavigate();
+
+  const submit = () => {
+    navigate('/search?q=' + value);
+  };
+
+  const keyDown: KeyboardEventHandler<HTMLInputElement> = e => {
+    if (e.key === 'Enter') {
+      submit();
+    }
+  };
+
+  return (
+    <Search
+      type="search"
+      placeholder="Search for places..."
+      value={value}
+      onChange={e => setValue(e.target.value)}
+      onKeyDown={keyDown}
+    />
+  );
 }

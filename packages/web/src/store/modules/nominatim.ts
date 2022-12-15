@@ -15,5 +15,8 @@ export const serviceNominatim = createApi({
         return new Reverse(data);
       },
     }),
+    search: build.query<IReverse[], string>({
+      query: q => `search?q=${q}&format=json`,
+    }),
   }),
 });
