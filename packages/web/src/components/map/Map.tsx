@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { LatLng } from 'leaflet';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import MapListener from './MapListener';
 
 const OSM_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const ATTRIB = `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`;
@@ -52,6 +53,7 @@ export default function Map() {
       <MapContainer center={[41.37, 2.2]} zoom={10} zoomControl={false}>
         <TileLayer attribution={ATTRIB} url={OSM_URL}></TileLayer>
         <ClickHandler />
+        <MapListener />
       </MapContainer>
     </Container>
   );

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { IReverse } from 'types';
+import { moveTo } from '../../../store/slices/map';
+import { useAppDispatch } from '../../../store/store';
 
 type Props = {
   result: IReverse;
@@ -27,9 +29,24 @@ const Result = styled.a`
 `;
 
 export default function SearchResult({ result }: Props) {
+  const dispatch = useAppDispatch();
+
   const showOnMap = () => {
-    // TODO
+    dispatch(
+      moveTo({
+        lat: result.lat,
+        lng: result.lon,
+        zoom: 17,
+      })
+    );
+    /* dispatch(
+      moveTo({
+        lat: '1',
+        lng: '12',
+        zoom: 1,
+      })
+    ); */
   };
 
-  return <Result>{result.display_name}</Result>;
+  return <Result onClick={showOnMap}>{result.display_name}</Result>;
 }
