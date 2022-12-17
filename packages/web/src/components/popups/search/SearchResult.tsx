@@ -10,5 +10,5 @@ export default function SearchResult({ result }: Props) {
     // TODO
   };
 
-  return <div>{result.display_name}</div>;
+  return <h1>{result.display_name}</h1>;
 }

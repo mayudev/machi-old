@@ -26,6 +26,9 @@ const Window = styled.div`
   pointer-events: all;
 
   background: white;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 export default function Sidebar({ children, name }: PropsWithChildren<Props>) {

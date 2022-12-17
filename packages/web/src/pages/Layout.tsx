@@ -30,6 +30,7 @@ const OverlayLayout = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto 160px;
   flex-grow: 1;
+  height: 90vh;
 `;
 
 export default function Layout() {
