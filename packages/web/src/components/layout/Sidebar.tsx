@@ -9,7 +9,7 @@ type Props = {
 
 const Header = styled.div`
   display: flex;
-  margin: 16px;
+  padding: 16px;
   align-items: center;
   justify-content: space-between;
   font-weight: 600;
