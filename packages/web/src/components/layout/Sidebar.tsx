@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import CloseButton from '../inputs/CloseButton';
 
 type Props = {
@@ -13,6 +13,16 @@ const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   font-weight: 600;
+`;
+
+const Appear = keyframes`
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0)
+  }
 `;
 
 const Window = styled.div`
@@ -29,6 +39,8 @@ const Window = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  animation: ${Appear} 0.3s ease;
 `;
 
 export default function Sidebar({ children, name }: PropsWithChildren<Props>) {
