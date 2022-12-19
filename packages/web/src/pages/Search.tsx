@@ -25,7 +25,7 @@ export default function Search() {
     const query = search.get('q');
     if (query) {
       trigger(query);
-      setValue(value);
+      setValue(query);
     }
   }, [search]);
 
