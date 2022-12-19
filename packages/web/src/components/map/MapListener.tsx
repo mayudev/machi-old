@@ -11,7 +11,6 @@ export default function MapListener() {
       map.setView({
         lat: Number(moveReq.lat),
         lng: Number(moveReq.lng),
-        zoom: 17,
       });
     }
   }, [moveReq]);
