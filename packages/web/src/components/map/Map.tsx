@@ -10,7 +10,7 @@ import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { LatLng } from 'leaflet';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import MapListener from './MapListener';
 
 const OSM_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -32,6 +32,10 @@ function ClickHandler() {
   useEffect(() => {
     if (!search.has('lat')) {
       setCurrent(null);
+    } else {
+      setCurrent(
+        new LatLng(Number(search.get('lat')!), Number(search.get('lng')!))
+      );
     }
   }, [search]);
 

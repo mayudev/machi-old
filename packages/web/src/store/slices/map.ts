@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface MapState {
-  lat: string;
-  lng: string;
+  lat: number;
+  lng: number;
   zoom: number;
 }
 
 export const mapSlice = createSlice({
   name: 'map',
   initialState: {
-    lat: '0',
-    lng: '0',
+    lat: 0,
+    lng: 0,
     zoom: 0,
   } as MapState,
   reducers: {

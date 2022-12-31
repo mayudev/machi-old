@@ -34,18 +34,11 @@ export default function SearchResult({ result }: Props) {
   const showOnMap = () => {
     dispatch(
       moveTo({
-        lat: result.lat,
-        lng: result.lon,
+        lat: Number(result.lat),
+        lng: Number(result.lon),
         zoom: 17,
       })
     );
-    /* dispatch(
-      moveTo({
-        lat: '1',
-        lng: '12',
-        zoom: 1,
-      })
-    ); */
   };
 
   return <Result onClick={showOnMap}>{result.display_name}</Result>;
