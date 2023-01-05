@@ -7,11 +7,10 @@ import PlaceContents from '../components/popups/place/PlaceContents';
 import { serviceNominatim } from '../store/modules/nominatim';
 
 const Container = styled.div`
-  grid-row: 2;
+  grid-row: 3;
   grid-column: 2;
 
   background: white;
-  margin: 12px;
   box-shadow: var(--shadow);
   border-radius: 8px;
 

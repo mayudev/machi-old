@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Search = styled.input`
+  grid-row: 1;
+  grid-column: 1;
+  pointer-events: all;
+
   outline: none;
   border: none;
   background: ${props => props.theme.background};

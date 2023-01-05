@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
-import Navbar from '../components/layout/Navbar';
 import Map from '../components/map/Map';
 import { PopupMode } from '../lib/popup';
 import Popup from './Popup';
 import '../style/transition.css';
 import LoginPopup from './popups/LoginPopup';
 import Place from './Place';
+import Rail, { RailAction } from '../components/layout/Rail';
+import SearchBar from '../components/layout/SearchBar';
 
 const Overlay = styled.div`
   position: fixed;
@@ -22,15 +23,15 @@ const Overlay = styled.div`
   z-index: 1000;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 `;
 
-const OverlayLayout = styled.div`
+const Rest = styled.div`
+  margin: 12px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto 160px;
+  grid-template-rows: 4rem auto 8rem;
   flex-grow: 1;
-  height: 90vh;
 `;
 
 export default function Layout() {
@@ -42,6 +43,12 @@ export default function Layout() {
 
   const showLoginPopup = () => {
     setPopupMode(PopupMode.Login);
+  };
+
+  const onAction = (action: RailAction) => {
+    if (action === RailAction.Login) {
+      showLoginPopup();
+    }
   };
 
   return (
@@ -59,11 +66,12 @@ export default function Layout() {
       </CSSTransition>
 
       <Overlay>
-        <Navbar onLoginPopup={showLoginPopup} />
-        <OverlayLayout>
+        <Rail onAction={onAction} />
+        <Outlet />
+        <Rest>
+          <SearchBar />
           <Place />
-          <Outlet />
-        </OverlayLayout>
+        </Rest>
       </Overlay>
     </>
   );

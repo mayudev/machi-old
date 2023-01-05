@@ -17,7 +17,7 @@ const Header = styled.div`
 
 const Appear = keyframes`
   from {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
 
   to {
@@ -29,9 +29,7 @@ const Window = styled.div`
   grid-column: 3;
   grid-row: 1 / 3;
 
-  margin: 0 12px 12px;
-  box-shadow: var(--shadow);
-  border-radius: 8px;
+  width: 25vw;
 
   pointer-events: all;
 
