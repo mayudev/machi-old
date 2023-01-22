@@ -26,6 +26,6 @@ export const themeLight: DefaultTheme = {
 
 [themeDark, themeLight].forEach(theme => {
   theme.railbg1 = themeDark.background;
-  (theme.railbg2 = themeDark.background2),
-    (theme.railfg1 = themeDark.foreground);
+  theme.railbg2 = themeDark.background2;
+  theme.railfg1 = themeDark.foreground;
 });
