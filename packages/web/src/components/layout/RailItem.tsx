@@ -40,7 +40,7 @@ const Item = styled.a`
 
   &:hover > ${Icon} {
     color: ${props => props.theme.primary};
-    background: ${props => props.theme.background2};
+    background: ${props => props.theme.railbg2};
   }
 `;
 

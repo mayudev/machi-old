@@ -11,7 +11,8 @@ type Props = {
 };
 
 const Container = styled.nav`
-  background: ${props => props.theme.background};
+  background: ${props => props.theme.railbg1};
+  color: ${props => props.theme.railfg1};
   pointer-events: all;
 
   z-index: 4;

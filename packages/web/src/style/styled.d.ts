@@ -8,5 +8,8 @@ declare module 'styled-components' {
     border: string;
     primary: string;
     primary2: string;
+    railbg1: string;
+    railbg2: string;
+    railfg1: string;
   }
 }
