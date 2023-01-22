@@ -8,7 +8,8 @@ type Props = {
 
 const Icon = styled.span`
   width: 48px;
-  padding: 2px 0;
+  height: 24px;
+  padding: 8px 0;
   text-align: center;
 
   border-radius: 100px;
