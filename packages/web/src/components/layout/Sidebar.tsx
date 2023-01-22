@@ -26,10 +26,8 @@ const Appear = keyframes`
 `;
 
 const Window = styled.div`
-  grid-column: 3;
-  grid-row: 1 / 3;
-
-  width: 25vw;
+  min-width: 400px;
+  max-width: 400px;
 
   pointer-events: all;
 
