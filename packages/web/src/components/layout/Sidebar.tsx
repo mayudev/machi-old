@@ -10,6 +10,10 @@ type Props = {
 const Header = styled.div`
   display: flex;
   padding: 16px;
+
+  background: ${props => props.theme.railbg1};
+  color: ${props => props.theme.railfg1};
+
   align-items: center;
   justify-content: space-between;
   font-weight: 600;
@@ -29,12 +33,17 @@ const Window = styled.div`
   min-width: 400px;
   max-width: 400px;
 
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-primary);
+
   pointer-events: all;
 
   background: white;
 
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   animation: ${Appear} 0.3s ease;
 `;

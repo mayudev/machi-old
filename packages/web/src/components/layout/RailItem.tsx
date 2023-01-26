@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 type Props = {
   icon: JSX.Element;
   label?: string;
+  to?: string;
   onClick?(): void;
 };
 
@@ -22,6 +24,13 @@ const Label = styled.div`
   font-weight: 500;
 
   transition: 200ms;
+
+  text-decoration: none;
+`;
+
+const LinkItem = styled(Link)`
+  text-decoration: none;
+  color: inherit;
 `;
 
 const Item = styled.a`
@@ -45,11 +54,19 @@ const Item = styled.a`
   }
 `;
 
-export default function RailItem({ icon, label, onClick }: Props) {
-  return (
+export default function RailItem({ icon, label, to, onClick }: Props) {
+  const Contents = () => (
     <Item onClick={onClick}>
       <Icon>{icon}</Icon>
       <Label>{label}</Label>
     </Item>
+  );
+
+  return to ? (
+    <LinkItem to={to}>
+      <Contents />
+    </LinkItem>
+  ) : (
+    <Contents />
   );
 }

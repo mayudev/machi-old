@@ -15,6 +15,9 @@ const Container = styled.nav`
   color: ${props => props.theme.railfg1};
   pointer-events: all;
 
+  margin: 10px;
+  border-radius: 8px;
+
   z-index: 4;
 
   padding-top: max(10px, 10vh);
@@ -24,7 +27,7 @@ export default function Rail({ onAction }: Props) {
   return (
     <Container>
       <RailItem icon={<FiMenu size={32} />} />
-      <RailItem icon={<FiSearch size={24} />} label="Search" />
+      <RailItem icon={<FiSearch size={24} />} label="Search" to="/search" />
       <RailItem icon={<FiMap size={24} />} label="Explore" />
       <RailItem
         icon={<FiLogIn size={24} />}
