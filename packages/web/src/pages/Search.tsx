@@ -1,5 +1,7 @@
 import { KeyboardEventHandler, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import Center from '../components/common/Center';
+import Hint from '../components/common/Hint';
 import Spinner from '../components/common/Spinner';
 import Sidebar from '../components/layout/Sidebar';
 import SearchInput from '../components/popups/search/SearchInput';
@@ -23,7 +25,7 @@ export default function Search() {
   // Search params handling
   useEffect(() => {
     const query = search.get('q');
-    if (query) {
+    if (query && query.length > 0) {
       trigger(query);
       setValue(query);
     }
@@ -37,11 +39,17 @@ export default function Search() {
         onSubmit={submit}
       />
       {result.isFetching ? (
-        <Spinner />
+        <Center>
+          <Spinner />
+        </Center>
       ) : result.isSuccess ? (
         <SearchResults results={result.data} />
+      ) : result.isError ? (
+        'error' // TODO error message
       ) : (
-        'error'
+        <Center>
+          <Hint>Start searching...</Hint>
+        </Center>
       )}
     </Sidebar>
   );
