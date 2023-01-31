@@ -1,5 +1,5 @@
 import { KeyboardEventHandler, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Search = styled.input`
@@ -33,6 +33,7 @@ const Search = styled.input`
 export default function SearchBar() {
   const [value, setValue] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
 
   const submit = () => {
     navigate('/search?q=' + value);
@@ -43,6 +44,8 @@ export default function SearchBar() {
       submit();
     }
   };
+
+  if (location.pathname === '/search') return <div></div>;
 
   return (
     <Search
