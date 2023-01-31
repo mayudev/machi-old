@@ -1,6 +1,6 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import CloseButton from '../inputs/CloseButton';
 
 type Props = {
@@ -11,9 +11,6 @@ const Header = styled.div`
   display: flex;
   padding: 16px;
 
-  background: ${props => props.theme.railbg1};
-  color: ${props => props.theme.railfg1};
-
   align-items: center;
   justify-content: space-between;
   font-weight: 600;
@@ -22,16 +19,32 @@ const Header = styled.div`
 const Appear = keyframes`
   from {
     transform: translateX(-100%);
+    opacity: 0.5;
   }
 
   to {
-    transform: translateX(0)
+    transform: translateX(0);
+    opacity: 1;
   }
 `;
 
-const Window = styled.div`
-  min-width: 400px;
-  max-width: 400px;
+const Disappear = keyframes`
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-100%);
+    opacity: 0.5;
+  }
+`;
+
+const Window = styled.div<{
+  exiting: boolean;
+}>`
+  min-width: 450px;
+  max-width: 450px;
 
   margin: 10px;
   border-radius: 8px;
@@ -45,21 +58,47 @@ const Window = styled.div`
   flex-direction: column;
   overflow: hidden;
 
-  animation: ${Appear} 0.3s ease;
+  animation: ${props =>
+    props.exiting
+      ? css`
+          ${Disappear} 0.3s var(--ease-out);
+        `
+      : css`
+          ${Appear} 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        `};
 `;
 
 export default function Sidebar({ children, name }: PropsWithChildren<Props>) {
   const navigate = useNavigate();
+  const [exiting, setExiting] = useState(false);
 
-  const navigateBack = () => {
-    navigate('/');
+  const hide = () => {
+    setExiting(true);
+    setTimeout(() => {
+      navigate('/');
+    }, 300);
   };
 
+  const handleKeydown = (ev: globalThis.KeyboardEvent) => {
+    if (ev.key === 'Escape') {
+      hide();
+    }
+  };
+
+  useEffect(() => {
+    // listen for Esc to close the sidebar
+    document.addEventListener('keydown', handleKeydown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeydown);
+    };
+  }, []);
+
   return (
-    <Window>
+    <Window exiting={exiting}>
       <Header>
         <span>{name}</span>
-        <CloseButton onClose={navigateBack} />
+        <CloseButton onClose={hide} />
       </Header>
       {children}
     </Window>
