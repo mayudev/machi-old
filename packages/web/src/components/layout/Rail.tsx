@@ -24,13 +24,19 @@ const Container = styled.nav`
 `;
 
 export default function Rail({ onAction }: Props) {
+  const standardSize = 24;
+
   return (
     <Container>
-      <RailItem icon={<FiMenu size={32} />} />
-      <RailItem icon={<FiSearch size={24} />} label="Search" to="/search" />
-      <RailItem icon={<FiMap size={24} />} label="Explore" />
+      <RailItem icon={<FiMenu size={standardSize} />} />
       <RailItem
-        icon={<FiLogIn size={24} />}
+        icon={<FiSearch size={standardSize} />}
+        label="Search"
+        to="/search"
+      />
+      <RailItem icon={<FiMap size={standardSize} />} label="Explore" />
+      <RailItem
+        icon={<FiLogIn size={standardSize} />}
         label="Log in"
         onClick={() => onAction(RailAction.Login)}
       />
