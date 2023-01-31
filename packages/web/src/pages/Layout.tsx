@@ -27,11 +27,12 @@ const Overlay = styled.div`
 `;
 
 const Rest = styled.div`
-  margin: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 4rem auto 8rem;
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
+
+  justify-content: space-between;
+  margin: 12px;
 `;
 
 export default function Layout() {

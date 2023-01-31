@@ -7,9 +7,6 @@ import PlaceContents from '../components/popups/place/PlaceContents';
 import { serviceNominatim } from '../store/modules/nominatim';
 
 const Container = styled.div`
-  grid-row: 3;
-  grid-column: 2;
-
   background: white;
   box-shadow: var(--shadow);
   border-radius: 8px;
@@ -21,6 +18,12 @@ const Container = styled.div`
 
   &:not(.place-exit):hover {
     opacity: 1;
+  }
+
+  @media (min-width: 768px) {
+    width: 300px;
+    align-self: center;
+    padding: 0.5rem 1rem;
   }
 `;
 
