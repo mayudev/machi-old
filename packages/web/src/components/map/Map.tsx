@@ -4,6 +4,7 @@ import {
   TileLayer,
   useMap,
   useMapEvent,
+  ZoomControl,
 } from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
@@ -58,6 +59,7 @@ export default function Map() {
         <TileLayer attribution={ATTRIB} url={OSM_URL}></TileLayer>
         <ClickHandler />
         <MapListener />
+        <ZoomControl position="bottomright" />
       </MapContainer>
     </Container>
   );
