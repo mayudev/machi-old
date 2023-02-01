@@ -30,8 +30,7 @@ export class Reverse {
       this.place.address?.neighbourhood ||
       this.place.address?.suburb ||
       this.place.address?.city_district ||
-      this.place.address?.state_district ||
-      this.municipality
+      this.place.address?.state_district
     );
   }
 }
