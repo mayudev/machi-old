@@ -45,7 +45,7 @@ function ClickHandler() {
     setSearch({
       lat: e.latlng.lat.toFixed(7).toString(),
       lng: e.latlng.lng.toFixed(7).toString(),
-      zoom: map.getZoom().toString(),
+      zoom: (map.getZoom() + 1).toString(),
     });
   });
 
