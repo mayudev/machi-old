@@ -1,3 +1,5 @@
+import { APIError } from './errors';
+
 export class Reverse {
   constructor(public place: IReverse) {}
 
@@ -14,6 +16,7 @@ export class Reverse {
       this.place.address?.town ||
       this.place.address?.village ||
       this.place.address?.municipality ||
+      this.place.address?.county ||
       'Unknown'
     );
   }
@@ -27,6 +30,7 @@ export class Reverse {
       this.place.address?.neighbourhood ||
       this.place.address?.suburb ||
       this.place.address?.city_district ||
+      this.place.address?.state_district ||
       this.municipality
     );
   }
@@ -79,4 +83,11 @@ export interface ReverseAddress {
   country?: string;
   country_code: string;
   continent?: string;
+}
+
+export function isValidReverseResponse(
+  data: IReverse | APIError
+): data is IReverse {
+  if (data['error']) return false;
+  else return true;
 }

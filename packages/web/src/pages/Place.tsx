@@ -67,7 +67,12 @@ export default function Place() {
         ) : result.isSuccess ? (
           <PlaceContents onClose={close} data={result.data} />
         ) : (
-          'error'
+          <div>
+            <strong>No result found.</strong>
+            <div>
+              {search.get('lat')}, {search.get('lng')}
+            </div>
+          </div>
         )}
       </Container>
     </CSSTransition>
