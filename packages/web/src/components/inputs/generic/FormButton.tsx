@@ -5,6 +5,7 @@ type Props = {
   onClick?(): void;
   primary?: boolean;
   icon?: JSX.Element;
+  title?: string;
 };
 
 const Button = styled.button<{
@@ -44,10 +45,11 @@ export default function FormButton({
   children,
   icon,
   primary,
+  title,
   onClick,
 }: PropsWithChildren<Props>) {
   return (
-    <Button primary={primary} onClick={onClick}>
+    <Button primary={primary} onClick={onClick} title={title}>
       {icon && <IconElement>{icon}</IconElement>}
       {children}
     </Button>

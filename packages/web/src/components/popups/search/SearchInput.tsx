@@ -13,7 +13,7 @@ type Props = {
 const InputContainer = styled.div`
   margin: 12px;
   display: grid;
-  grid-template-columns: 1fr 8rem;
+  grid-template-columns: 1fr 4rem;
   gap: 10px;
 `;
 
@@ -38,9 +38,11 @@ export default function SearchInput({ value, onChange, onSubmit }: Props) {
         onKeyDown={keyDown}
         placeholder="Search..."
       />
-      <FormButton onClick={onSubmit} icon={<FiSearch />}>
-        Search
-      </FormButton>
+      <FormButton
+        onClick={onSubmit}
+        icon={<FiSearch />}
+        title="Search"
+      ></FormButton>
     </InputContainer>
   );
 }
