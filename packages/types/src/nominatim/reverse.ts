@@ -17,7 +17,7 @@ export class Reverse {
       this.place.address?.village ||
       this.place.address?.municipality ||
       this.place.address?.county ||
-      'Unknown'
+      this.place.address?.state_district
     );
   }
 
@@ -29,8 +29,7 @@ export class Reverse {
       this.place.address?.road ||
       this.place.address?.neighbourhood ||
       this.place.address?.suburb ||
-      this.place.address?.city_district ||
-      this.place.address?.state_district
+      this.place.address?.city_district
     );
   }
 }
