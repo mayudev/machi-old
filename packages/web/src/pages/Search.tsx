@@ -43,7 +43,13 @@ export default function Search() {
           <Spinner />
         </Center>
       ) : result.isSuccess ? (
-        <SearchResults results={result.data} />
+        result.data.length === 0 ? (
+          <Center>
+            <Hint>No results.</Hint>
+          </Center>
+        ) : (
+          <SearchResults results={result.data} />
+        )
       ) : result.isError ? (
         'error' // TODO error message
       ) : (
