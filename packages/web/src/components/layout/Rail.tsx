@@ -28,13 +28,16 @@ export default function Rail({ onAction }: Props) {
 
   return (
     <Container>
-      <RailItem icon={<FiMenu size={standardSize} />} />
       <RailItem
         icon={<FiSearch size={standardSize} />}
         label="Search"
         to="/search"
       />
-      <RailItem icon={<FiMap size={standardSize} />} label="Explore" />
+      <RailItem
+        icon={<FiMap size={standardSize} />}
+        label="Explore"
+        to="/explore"
+      />
       <RailItem
         icon={<FiLogIn size={standardSize} />}
         label="Log in"

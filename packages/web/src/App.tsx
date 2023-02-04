@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { ThemeContext, themeMappings, ThemeMode } from './context/ThemeContext';
+import Explore from './pages/Explore';
 import Layout from './pages/Layout';
 import Search from './pages/Search';
 
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
       {
         path: '/search',
         element: <Search />,
+      },
+      {
+        path: '/explore',
+        element: <Explore />,
       },
     ],
   },
