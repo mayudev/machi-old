@@ -7,7 +7,8 @@ import PlaceContents from '../components/popups/place/PlaceContents';
 import { serviceNominatim } from '../store/modules/nominatim';
 
 const Container = styled.div`
-  background: white;
+  background: ${props => props.theme.background};
+
   box-shadow: var(--shadow);
   border-radius: 8px;
 

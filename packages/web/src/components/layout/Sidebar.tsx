@@ -52,7 +52,7 @@ const Window = styled.div<{
 
   pointer-events: all;
 
-  background: white;
+  background: ${props => props.theme.background};
 
   display: flex;
   flex-direction: column;

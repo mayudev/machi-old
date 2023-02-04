@@ -13,15 +13,26 @@ import { useEffect, useState } from 'react';
 import { LatLng } from 'leaflet';
 import { useSearchParams } from 'react-router-dom';
 import MapListener from './MapListener';
+import { ThemeMode, useTheme } from '../../context/ThemeContext';
 
 const OSM_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const ATTRIB = `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`;
 
-const Container = styled.div`
+const Container = styled.div<{
+  isDarkTheme: boolean;
+}>`
   .leaflet-container {
     width: 100%;
     height: 100vh;
     filter: saturate(50%);
+
+    ${props =>
+      props.isDarkTheme &&
+      `
+      & .leaflet-layer {
+        filter: invert(0.8) hue-rotate(210deg);
+      }
+    `}
   }
 `;
 
@@ -53,8 +64,9 @@ function ClickHandler() {
 }
 
 export default function Map() {
+  const [theme] = useTheme();
   return (
-    <Container>
+    <Container isDarkTheme={theme === ThemeMode.Dark}>
       <MapContainer center={[41.37, 2.2]} zoom={10} zoomControl={false}>
         <TileLayer attribution={ATTRIB} url={OSM_URL}></TileLayer>
         <ClickHandler />
