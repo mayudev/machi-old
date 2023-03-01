@@ -5,7 +5,7 @@ export const themeDark: DefaultTheme = {
   background2: '#31363c',
   foreground: '#eeeeee',
   foreground2: '#b3b3b3',
-  border: '#b0b0b0',
+  border: '#666c73',
   primary: '#ca469d',
   primary2: '#e65fb8',
   railbg1: '',
