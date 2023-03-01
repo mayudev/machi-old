@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 import { IReverse } from 'types';
+import {
+  getCityOrEquivalent,
+  getCountry,
+  getImmediatePlaceName,
+} from '../../../lib/reverseHelpers';
 import { moveTo } from '../../../store/slices/map';
 import { useAppDispatch } from '../../../store/store';
 
@@ -41,5 +46,13 @@ export default function SearchResult({ result }: Props) {
     );
   };
 
-  return <Result onClick={showOnMap}>{result.display_name}</Result>;
+  return (
+    <Result onClick={showOnMap}>
+      {getImmediatePlaceName(result.address!)}
+      {', '}
+      {getCityOrEquivalent(result.address!)}
+      {', '}
+      {getCountry(result.address!)}
+    </Result>
+  );
 }
