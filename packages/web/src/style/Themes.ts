@@ -18,7 +18,7 @@ export const themeLight: DefaultTheme = {
   background: '#ffffff',
   background2: '#f7f7f7',
   foreground: '#131516',
-  foreground2: '#131516',
+  foreground2: '#697579',
   border: '#b0b0b0',
   primary: '#ca469d',
   primary2: '#e65fb8',

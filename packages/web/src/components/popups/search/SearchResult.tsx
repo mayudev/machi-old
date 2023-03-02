@@ -33,6 +33,10 @@ const Result = styled.a`
   }
 `;
 
+const Secondary = styled.span`
+  color: ${props => props.theme.foreground2};
+`;
+
 export default function SearchResult({ result }: Props) {
   const dispatch = useAppDispatch();
 
@@ -46,13 +50,18 @@ export default function SearchResult({ result }: Props) {
     );
   };
 
+  const immediate = getImmediatePlaceName(result.address!);
+  const city = getCityOrEquivalent(result.address!);
+
   return (
-    <Result onClick={showOnMap}>
-      {getImmediatePlaceName(result.address!)}
+    <Result role="link" onClick={showOnMap} title={result.display_name}>
+      {immediate}
       {', '}
-      {getCityOrEquivalent(result.address!)}
-      {', '}
-      {getCountry(result.address!)}
+      <Secondary>
+        {city !== immediate && city && `${city}, `}
+
+        {getCountry(result.address!)}
+      </Secondary>
     </Result>
   );
 }
