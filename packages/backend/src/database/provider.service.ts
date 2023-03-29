@@ -16,6 +16,7 @@ export class PostgresConfigService implements TypeOrmOptionsFactory {
       database: this.configService.get('POSTGRES_DB', 'machi'),
       entities: [],
       synchronize: true,
+      autoLoadEntities: true,
     };
   }
 }
