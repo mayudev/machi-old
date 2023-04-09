@@ -1,9 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { UserService } from '../models/users/users.service';
+import { generateOTP } from '../lib/otp';
 import { MailerService } from './mailer.service';
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
+
   constructor(
     private usersService: UserService,
     private mailerService: MailerService
@@ -19,6 +22,11 @@ export class AuthService {
   }
 
   async beginLogin(mail: string): Promise<any> {
-    this.sendMail(mail, '123456');
+    this.usersService.findByEmail(mail);
+
+    const otp = generateOTP(6);
+    this.logger.log(`Generated OTP ${otp}`);
+
+    this.sendMail(mail, otp);
   }
 }
